@@ -1,0 +1,8 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        default_dict = defaultdict(list)
+        for i in range(0,len(strs)):
+            strs_sorted = sorted(strs[i])
+            key_strs = "".join(strs_sorted)
+            default_dict[key_strs].append(strs[i])
+        return list(default_dict.values())
