@@ -1,0 +1,15 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        ans = []
+        a = 1
+        b = 1
+        left_array = [1]
+        right_array = [1]
+        for i in range(len(nums)-1): 
+                left_array.append(left_array[i] * nums[i])
+                last_num = len(nums) - i - 1
+                right_array.append(right_array[i] * nums[last_num])
+        reversed_right_array = right_array[::-1]
+        for i in range(len(nums)):
+            ans.append(left_array[i] * reversed_right_array[i])
+        return ans
