@@ -1,0 +1,20 @@
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+            cols = len(grid[0]) 
+            rows = len(grid)
+            count = 0
+            def reverse(r,c):
+                if r + 1  > rows or c + 1  > cols or r < 0 or c < 0 or grid[r][c] == "0":
+                    return
+                grid[r][c] = "0"
+                reverse(r+1,c)
+                reverse(r,c+1)
+                reverse(r-1,c)
+                reverse(r,c-1)
+
+            for i in range(rows):
+                for l in range(cols):
+                    if grid[i][l] == "1":
+                        count += 1    
+                        reverse(i,l)
+            return count
