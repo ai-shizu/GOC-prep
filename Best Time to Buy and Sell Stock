@@ -1,0 +1,9 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        min_num = prices[0]
+        benefit = 0
+        for price in prices:
+            min_num = min(min_num,price)
+            n = price - min_num
+            benefit = max(benefit,n)
+        return benefit
