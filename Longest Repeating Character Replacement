@@ -1,0 +1,19 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        from collections import defaultdict
+        count = defaultdict(int)
+        n = len(s)
+        left = 0
+        right = 0
+        max_freq = 0
+        ans = 0
+        while right < n:
+            char = s[right]
+            count[char] += 1
+            max_freq = max(max_freq, count[char])
+            if right - left - max_freq + 1 > k:
+                count[s[left]] -= 1 
+                left += 1
+            ans = max(ans, right - left + 1)
+            right += 1
+        return ans
