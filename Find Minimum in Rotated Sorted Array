@@ -1,0 +1,13 @@
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        left = 0
+        right = n - 1
+        def center(m):
+            return m // 2 
+        while left < right:
+            if nums[center(left + right)] <  nums[right]:
+                right = center(left + right)
+            else:
+                left = center(left + right) + 1
+        return nums[left]
